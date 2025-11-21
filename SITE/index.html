@@ -3,19 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Congresso Quarto de Guerra</title>
+<title>Conferência Imersos</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header class="header">
-  <img src="C:\Users\Alisson\Documents\GitHub\Site-Sistema\SITE\Imagens\Logo.jpg" alt="Insejec Campinas" class="logo">
+  <img src="C:\Users\Alisson\Documents\GitHub\Site-Sistema\SITE\Imagens\Logo3.png" alt="Insejec Campinas" class="logo">
 </header>
 
-<section class="banner">
-  <img src="https://github.com/alissonsks/Site-Sistema/blob/4655683f0ee9dc7609f69b780e7ee0599ac1b922/SITE/Imagens/Banner.jpg" alt="Banner" class="banner-img">
+
+<section class="banner-carousel">
+  <div class="carousel">
+
+    <div class="slides" id="slides">
+      <div class="slide">
+        <img src="https://raw.githubusercontent.com/alissonsks/Site-Sistema/6cced352652774d579ce95c11d602e2775bcb18a/SITE/Imagens/Banner.jpg" alt="Banner 1">
+      </div>
+      <div class="slide">
+        <img src="https://raw.githubusercontent.com/alissonsks/Site-Sistema/435f33df5787d31288335210cfe92d2fffc7a717/SITE/Imagens/Banner2.jpg" alt="Banner 2">
+      </div>
+      <div class="slide">
+        <img src="https://raw.githubusercontent.com/alissonsks/Site-Sistema/435f33df5787d31288335210cfe92d2fffc7a717/SITE/Imagens/Banner3.png" alt="Banner 3">
+      </div>
+    </div>
+
+    <!-- Botões -->
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+  </div>
+
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+  </div>
 </section>
+
+
+
 
 
 <div class="container">
@@ -39,7 +67,7 @@
       <p>Venha com expectativa!
          Deixe Deus tocar, curar, restaurar e ativar aquilo que Ele já plantou em você.
          Não fique de fora desse tempo de despertamento e transformação!</p>
-      <p><strong>Garanta sua inscrição e viva essa experiência imersiva com Deus!</strong></p>
+      <p><strong>Garanta sua inscrição e viva essa experiência imersiva com Deus! 🙌</strong></p>
 
       <p><i class="fa-solid fa-microphone"></i> <strong>Ministrações:</strong></p>
       <ul>
@@ -59,15 +87,63 @@
       <p><strong>INGRESSO - INSCRIÇÃO</strong></p>
       <p>R$ 30,00 + 7,00 Taxa</p>
       <p><strong>Total: R$ 37,00</strong></p>
-      <button class="btn-buy"><i class="fa-solid fa-cart-shopping"></i> Fazer Inscrição</button>
+ <button class="btn-buy"><i class="fa-solid fa-cart-shopping"></i> Fazer Inscrição</button>
       <p class="info-tax"><i class="fa-solid fa-circle-info"></i> Entenda nossa taxa</p>
+
     </div>
   </div>
 </div>
 
 <footer class="footer">
-  <p>© 2024 Ticket Gospel | CNPJ: 44.141.305/0001-99</p>
+  <p>© Insejec Campinas</p>
+  
+  <div class="social-icons">
+    <a href="https://www.instagram.com/insejec_campinas/" target="_blank">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@insejeccampinas9047" target="_blank">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+    <a href="https://www.facebook.com/Insejec.Campinas/?locale=pt_BR" target="_blank">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+  </div>
 </footer>
+
+<script>
+let currentSlideIndex = 0;
+
+function showSlide(index) {
+  const slides = document.querySelectorAll('.slide');
+
+  if (index >= slides.length) index = 0;
+  if (index < 0) index = slides.length - 1;
+
+  currentSlideIndex = index;
+
+  document.getElementById('slides').style.transform =
+    `translateX(-${index * 100}%)`;
+
+  updateThumbnails();
+}
+
+function changeSlide(step) {
+  showSlide(currentSlideIndex + step);
+}
+
+function goToSlide(index) {
+  showSlide(index);
+}
+
+function updateThumbnails() {
+  const thumbs = document.querySelectorAll('.thumb');
+  thumbs.forEach((thumb, i) => {
+    thumb.classList.toggle('active', i === currentSlideIndex);
+  });
+}
+
+showSlide(0);
+</script>
 
 </body>
 </html>
